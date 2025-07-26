@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Dashboard - TrackXpense
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <h1>Welcome, {{ current_user.username }} 👋</h1>
+
+    <div class="dashboard-summary">
+        <h3>Your Budget Summary</h3>
+        <ul>
+            <li><strong>Total Income:</strong> ₦0.00</li>
+            <li><strong>Total Expenses:</strong> ₦0.00</li>
+            <li><strong>Balance:</strong> ₦0.00</li>
+        </ul>
+        <p>This section will show your personalized budget data as you start tracking!</p>
+    </div>
+</div>
+{% endblock %}
