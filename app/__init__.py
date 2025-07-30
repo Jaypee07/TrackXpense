@@ -4,7 +4,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
 from dotenv import load_dotenv
-from .routes import main
 
 # Load environment variables from .env
 load_dotenv()
@@ -35,7 +34,9 @@ def create_app():
     migrate.init_app(app, db)
     login_manager.init_app(app)
 
-    # Register blueprints
+
+    # Register blueprints (import here to avoid circular import)
+    from .routes import main
     app.register_blueprint(main)
 
     return app

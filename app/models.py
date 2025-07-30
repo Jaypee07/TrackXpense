@@ -1,6 +1,8 @@
+# Restore db import at the top
+from app import db
 from flask_login import UserMixin
 from datetime import datetime
-from . import db
+
 from flask_login import UserMixin
 
 class User(db.Model, UserMixin):

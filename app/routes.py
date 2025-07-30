@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, redirect, url_for, flash, request
 from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from app import db
+import typing as _t
 from app.models import User
 from app.forms import RegisterForm, LoginForm
 
@@ -18,6 +18,7 @@ def home():
 def register():
     form = RegisterForm()
     if form.validate_on_submit():
+        from app import db  # Import here to avoid circular import
         hashed_pw = generate_password_hash(form.password.data)
         user = User(username=form.username.data, email=form.email.data, password=hashed_pw)
         db.session.add(user)
